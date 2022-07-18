@@ -1,3 +1,4 @@
+import 'package:dart_http/model/cidade.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
@@ -7,7 +8,11 @@ Future<void> main() async {
   var response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {
-    var responseData = convert.jsonDecode(response.body);
-    print(responseData['cep']);
+    // var responseData = convert.jsonDecode(response.body);
+    // print(responseData['cep']);
+
+    var cidade = Cidade.fromJson(response.body);
+
+    print(cidade);
   }
 }
